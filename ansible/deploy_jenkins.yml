@@ -1,0 +1,17 @@
+---
+- name: Setup configuration of Jenkins
+  hosts:  local
+  connection: local
+  gather_facts: True
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  vars:
+    jenkins_hostname: localhost
+    java_packages:
+      - openjdk-8-jdk
+
+  roles:
+    - role: geerlingguy.java
+    - role: geerlingguy.jenkins
